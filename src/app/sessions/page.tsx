@@ -1,6 +1,7 @@
 'use client';
 import useSWR from 'swr';
 import { cn } from '@/lib/utils';
+import { ConsumptionSession } from '@/types/consumption';
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -15,11 +16,11 @@ export default function SessionsPage() {
       <h1 className="text-2xl font-bold mb-6">Recent Sessions</h1>
       {(!data || data.length === 0) && <p>No sessions yet.</p>}
       <ul className="space-y-3">
-        {data?.map((s: any) => (
+        {data?.map((s: ConsumptionSession) => (
           <li key={s.id} className={cn('border p-4 rounded-lg')}>
-            <div className="font-medium">{s.method}</div>
-            {s.notes && <p className="text-sm text-gray-600 mt-1">{s.notes}</p>}
-            <p className="text-xs text-gray-400 mt-2">{new Date(s.createdAt).toLocaleString()}</p>
+            <div className="font-medium">{s.vessel} - {s.strain_name}</div>
+            <p className="text-sm text-gray-600 mt-1">{s.location}</p>
+            <p className="text-xs text-gray-400 mt-2">{new Date(s.created_at).toLocaleString()}</p>
           </li>
         ))}
       </ul>
