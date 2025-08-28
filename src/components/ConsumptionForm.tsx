@@ -7,11 +7,8 @@ import { useConsumptionStore } from '@/store/consumption';
 import {
   ConsumptionFormData,
   VESSEL_TYPES,
-  ACCESSORY_TYPES,
-  getQuantityConfig,
   createQuantityValue,
-  VesselType,
-  FlowerSize
+  VesselType
 } from '@/types/consumption';
 import { cn } from '@/lib/utils';
 import SuccessNotification from '@/components/ui/SuccessNotification';

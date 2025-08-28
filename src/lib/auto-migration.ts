@@ -38,7 +38,7 @@ export const autoMigration = {
     }
   },
   migrateSilently: async () => {
-    try { await autoMigration.migrate(); } catch (_) {}
+    try { await autoMigration.migrate(); } catch {}
   },
 };
 export default autoMigration;

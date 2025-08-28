@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useConsumptionStore } from '@/store/consumption';
 import Navigation from './Navigation';
 import ConsumptionForm from './ConsumptionForm';
 import ConsumptionHistory from './ConsumptionHistory';
-import { BarChart3, Settings as SettingsIcon, Clock, MapPin, Leaf } from 'lucide-react';
+import { BarChart3, Settings as SettingsIcon } from 'lucide-react';
 import { autoMigration } from '@/lib/auto-migration';
 
 // Analytics component - simplified version for cyrustrack
@@ -35,13 +35,13 @@ const Analytics: React.FC = () => {
             </div>
             <div className="bg-blue-50 p-4 rounded-lg">
               <div className="text-2xl font-bold text-blue-700">
-                {[...new Set(sessions.map((s: any) => s.strainName).filter(Boolean))].length}
+                {[...new Set(sessions.map((s) => s.strain_name).filter(Boolean))].length}
               </div>
               <div className="text-sm text-blue-600">Unique Strains</div>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg">
               <div className="text-2xl font-bold text-purple-700">
-                {[...new Set(sessions.map((s: any) => s.location).filter(Boolean))].length}
+                {[...new Set(sessions.map((s) => s.location).filter(Boolean))].length}
               </div>
               <div className="text-sm text-purple-600">Locations</div>
             </div>

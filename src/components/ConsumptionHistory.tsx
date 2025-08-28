@@ -15,7 +15,6 @@ const ConsumptionHistory: React.FC = () => {
     searchTerm,
     setSearchTerm,
     filters,
-    setFilters,
     newlyCreatedSessionId,
     clearNewlyCreatedSessionId,
     setCurrentSession,
@@ -34,7 +33,7 @@ const ConsumptionHistory: React.FC = () => {
     clearNewlyCreatedSessionId();
   }, [loadSessions, clearNewlyCreatedSessionId]);
 
-  const filteredSessions = sessions.filter((session: any) => {
+  const filteredSessions = sessions.filter((session) => {
     if (searchTerm) {
       const searchLower = searchTerm.toLowerCase();
       return (

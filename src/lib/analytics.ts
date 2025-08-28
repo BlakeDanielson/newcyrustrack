@@ -1,13 +1,10 @@
-import { ConsumptionSession, formatQuantity, QuantityValue, QuantityAnalytics } from '@/types/consumption';
+import { ConsumptionSession, QuantityValue, QuantityAnalytics } from '@/types/consumption';
 import {
   startOfWeek,
   endOfWeek,
   startOfMonth,
   endOfMonth,
-  differenceInWeeks,
-  differenceInMonths,
   format,
-  parseISO,
   isWithinInterval,
   eachWeekOfInterval,
   eachMonthOfInterval,
@@ -301,7 +298,7 @@ export class AnalyticsService {
   }
 
   private static normalizeQuantity(session: ConsumptionSession): number {
-    if (typeof (session as any).quantity === 'number') return (session as any).quantity;
+    if (typeof (session as ConsumptionSession & { quantity: number }).quantity === 'number') return (session as ConsumptionSession & { quantity: number }).quantity;
     if (session.quantity && typeof session.quantity === 'object') return (session.quantity as QuantityValue).amount;
     return 0;
   }
