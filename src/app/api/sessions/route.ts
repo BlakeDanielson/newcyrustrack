@@ -26,3 +26,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
+
+export async function GET() {
+  try {
+    const sessions = await prisma.consumptionSession.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 100,
+    });
+    return NextResponse.json(sessions, { status: 200 });
+  } catch (err) {
+    console.error("/api/sessions GET error", err);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}
